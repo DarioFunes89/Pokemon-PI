@@ -1,0 +1,42 @@
+
+.position{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    width: 100%;
+    background-image: url(imageLanding.jpg);
+    background-size: cover;
+}
+
+/* Button Style */
+.boton{
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    border: none;
+    position: relative;
+    top: 180px;
+    left: -240px;
+    padding: 12px 25px;
+    color: #a9a114;
+    font-family: 'Roboto', Arial;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    line-height: 1;
+    border-radius: 24px;
+
+    background-image: linear-gradient(45deg, #0f206c 10%, #1723a4 55%, #092cc8 90%);
+    background-position: 90% 0;
+    background-size: 200% 200%;
+    box-shadow: 0 2px 8px -1px #3f3709;
+
+    transition: all 0.5s ease;
+}
+
+.boton:hover {
+    box-shadow: 0 0px 0px 0 rgba(0, 40, 120, 0);
+    background-position: 0 0;
+    transform: translateY(-5px);
+}
