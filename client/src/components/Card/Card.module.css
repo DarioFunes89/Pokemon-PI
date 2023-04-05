@@ -2,12 +2,10 @@
     position: relative;
     min-height: 12em;
     width: 300px;
-    height: 380px;
     text-decoration: none;
     border-radius: 0.75em;
     box-shadow: 0 3px 3px #0001;
     overflow: hidden;
-    display: grid;
     grid-template-columns: [x0] 1fr [x1] 1fr [x2];
     grid-template-rows: [y0] 40px [y1] 190px [y2] 26px [y3] 75px [y4] 30px [y5] 1fr [y6];
     transition: all 0.4s ease;
@@ -21,7 +19,7 @@
   grid-column: x0 / x1;
   grid-row: y0/y1;
   font-family: sans-serif;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bolder;
   border-color: black;
   color: white;
@@ -37,109 +35,9 @@
   max-width: 320px;
 }  
 
-.typetitle{
-  grid-column: x0 / x2;
-  grid-row: y2/y3;
-  font-family: sans-serif;
-  font-size: 14px;
-  font-weight: bolder;
-  color: rgb(0, 0, 0);
-}
-
 .types{
   grid-column: x0 / x2;
   grid-row: y3/y4;
   display: flex;
   justify-content: center;
-}
-
-.aboutitle{
-  grid-column: x0 / x2;
-  grid-row: y4/y5;
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: bolder;
-  color: rgb(0, 0, 0);
-}
-
-/* Colores de Titulos */
-
-.fire{
-  color:#F57D31
-}
-
-.normal{
-  color: #AAA67F
-}
-
-.fighting{
-  color: #C12239
-}
-
-.flying{
-  color: #A891EC
-}
-
-.ground{
-  color: #DEC16B
-}
-
-.poison{
-  color: #A43E9E
-}
-
-.rock{
-  color: #B69E31
-}
-
-.bug{
-  color: #A7B723
-}
-
-.ghost{
-  color: #70559B
-} 
-
-.steel{
-  color: #B7B9D0
-}
-
-.water{
-  color: #6493EB
-}
-
-.grass{
-  color: #74CB48
-}
-
-.electric{
-  color: #F9CF30
-}
-
-.psychic{
-  color: #FB5584
-}
-
-.ice{
-  color: #9AD6DF
-} 
-
-.dragon{
-  color: #7037FF
-}
-
-.dark{
-  color: #75574C
-}
-
-.fairy{
-  color: #E69EAC
-}
-
-.unknown{
-  color: #A9A7AA
-}
-
-.shadow{
-  color: #453F3A
 }
