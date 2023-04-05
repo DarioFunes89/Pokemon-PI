@@ -1,34 +1,30 @@
-.home{
-  position: absolute;
-  bottom: 4%;
-  left: 38%;
-}
-
-.homebtn{
+.boton{
   cursor: pointer;
   outline: none;
   text-decoration: none;
   border: none;
-
-  padding: 16px 32px;
-  color: #fff;
+  position: relative;
+  top: 25%;
+  left: 75%;
+  padding: 12px 25px;
+  color: #fdf8f8;
   font-family: 'Roboto', Arial;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: .5px;
   line-height: 1;
-  border-radius: 8px;
+  border-radius: 24px;
 
   background-image: linear-gradient(45deg, #2378c9 10%, #133079 90%);
   background-position: 90% 0;
   box-shadow: 0 2px 8px -1px #09113f;
-  
-  opacity: 0;
-  animation: showText 1s 1s linear forwards;
+
   transition: all 0.5s ease;
 }
-.homebtn:hover{
+
+.boton:hover {
   box-shadow: 0 0px 0px 0 rgba(0, 40, 120, 0);
+  background-position: 0 0;
   transform: translateY(-5px);
 }
 
@@ -54,7 +50,15 @@
 }
 
 .name{
-  font-size: 40px;
+  font-size: 60px;
+  margin-left: 8%;
+  margin-top: 5%;
+}
+
+.id{
+  font-size: 60px;
+  margin-left: 8%;
+  margin-top: 5%;
 }
 
 .encabezado{
@@ -83,147 +87,18 @@
     display: flex;
     flex-flow: column;
     width: 500px;
-    margin-left: 6%;
-    margin-top: 6%;
-    color: rgb(41, 41, 41);
+    margin-left: 16%;
+    margin-top: 2%;
 }
 
-.stats .bar{
-    margin: 20px 0;
-    position: relative;
-}
-
-.stats .bar .info span{
-    font-size: 17px;
-    font-weight: 500;
-    position: absolute;
-    left: 0;
-    bottom: 100%;
-    opacity: 0;
-    animation: showText 0.5s 1s linear forwards;
-}
-
- /* Height and Weight */
- 
-.pokweight{
+.pokestats{
   font-family: sans-serif;
-  font-size: 16px;
+  font-size: 36px;
   font-weight: 500;
   color: rgb(0, 0, 0);
   margin-left: 8%;
 }
-
-.weight{
-  font-family: sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgb(51, 51, 51);
-}
-
-.pokheight{
-  font-family: sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: rgb(0, 0, 0);
-  margin-left: 8%;
-  
-}
-
-.height{
-  font-family: sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  height: 2vh;
-  width: 25vh;
-  color: rgb(51, 51, 51);
-}
-/* Stats Progress Bar */
-
-  @keyframes showText {
-    100%{
-      opacity: 1;
-    }
-  }
-  .stats .bar .progress{
-    height: 10px;
-    width: 100%;
-    left: 0;
-    background: #f0f0f0;
-    position: relative;
-    transform: scaleX(0);
-    transform-origin: left;
-    border-radius: 10px;
-    box-shadow: inset 0 1px 1px rgba(0,0,0,0.05),
-                0 1px rgba(255,255,255,0.8);
-    animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
-  }
-  @keyframes animate {
-    100%{
-      transform: scaleX(1);
-    }
-  }
-  .bar .progress span{
-    height: 100%;
-    position: absolute;
-    left: 0;
-    border-radius: 10px;
-    transform: scaleX(0);
-    transform-origin: left;
-    background: #6665ee;
-    animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
-  }
-
-  .progress span::before{
-    position: absolute;
-    content: "";
-    top: -10px;
-    right: 0;
-    height: 0;
-    width: 0;
-    border: 7px solid transparent;
-    border-bottom-width: 0px;
-    border-right-width: 0px;
-    border-top-color: #000;
-    opacity: 0;
-    animation: showText2 0.5s 1.5s linear forwards;
-  }
-  .progress span::after{
-    position: absolute;
-    top: -28px;
-    right: 0;
-    font-weight: 500;
-    background: #000;
-    color: #fff;
-    padding: 1px 8px;
-    font-size: 12px;
-    border-radius: 3px;
-    opacity: 0;
-    animation: showText2 0.5s 1.5s linear forwards;
-  }
-
-  @keyframes showText2 {
-    100%{
-      opacity: 1;
-    }
-  }
-
-  .hp::after{
-    content: attr(per);
-  }
-  .attack::after{
-    content: attr(per);
-  }
-  .defense::after{
-    content: attr(per);
-  }
-  .speed::after{
-    content: attr(per);
-  }
-
-
-
-
-  
+   
 .loading{
   position: absolute;
   padding-top: 5%;

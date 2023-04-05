@@ -84,20 +84,6 @@ const getApiInfo = async () => {
     const results = apiUrl.data.results
 
     const pokemonInfo = []
-
-    // const resultsPokes = apiUrl.data.results.map(async el => {
-    //     const pokes = await axios.get(el.url);
-    //     const pokeInfo = pokes.data
-
-    //     return {
-    //         id: pokeInfo.id,
-    //         name: el.name,
-    //         type: pokeInfo.types.map( t => t.type.name),
-    //         img: pokeInfo.sprites.versions["generation-v"]["black-white"].animated
-    //            .front_default,
-    //         strengh: pokeInfo.stats[1].base_stat,
-    //     }
-    // })
     
     for(let i = 0 ; i < results.length ; i++){
       const pokes = await axios.get(results[i].url);
@@ -150,27 +136,8 @@ const getPokeInfo = async (id) => {
   try {
     const apiPokeUrl = await axios.get("https://pokeapi.co/api/v2/pokemon/" + id);
     const results = apiPokeUrl.data
-    const apiPokeSpecie = await axios.get(results.species.url)
-    const speciesresult = apiPokeSpecie.data
-    const pokeEvolution = await axios.get(speciesresult['evolution_chain'].url)
-
-    const allDescriptions = speciesresult["flavor_text_entries"].filter( el => el.language.name === 'en')
-    const speciespok = speciesresult.genera.filter( el => el.language.name === 'en')
-    const locations = await axios.get(results['location_area_encounters'])
-    const moves = results.moves
-    
 
     const pokemonInfo = {
-      // ABOUT
-      abilities: results.abilities ? results.abilities.map( a => a.ability.name) : null,
-      growth: speciesresult['growth_rate'] ? speciesresult['growth_rate'].name : null,
-      habitat: speciesresult.habitat ? speciesresult.habitat.name : null,
-      description: allDescriptions[random(allDescriptions.length)]['flavor_text'].replace('POKéMON', 'Pokémon'),
-      species: speciespok[0].genus ? speciespok[0].genus : null,
-      locations: arreglo(locations.data),
-      moves: arreglo(moves),
-
-      // STATS
       id: results.id,
       name: results.name,
       types: results.types.map((t) => t.type.name),
@@ -181,11 +148,6 @@ const getPokeInfo = async (id) => {
       speed: results.stats[5].base_stat,
       weight: results.weight,
       height: results.height,
-      happiness: speciesresult['base_happiness'],
-      capture: speciesresult['capture_rate'],
-
-      //EVOLUTION
-      evolution: await evolution(pokeEvolution.data)
     }
     console.log(pokemonInfo)
 
