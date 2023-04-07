@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../../redux/actions';
@@ -18,17 +18,15 @@ export default function Detail (props){
 
     useEffect( () => {
         dispatch(getDetail(props.match.params.id));
-    },[dispatch])
+    },[dispatch, props.match.params.id])
 
     const myPokemon = useSelector( state => state.detail)
 
-    const [section, setSection] = useState(1);
-
     useEffect( () => {
         if(myPokemon[0] && myPokemon[0].createdInDb){
-            setSection(2)
+            
         }
-    }, [myPokemon, setSection]);
+    }, [myPokemon]);
 
     return(
         <div>
@@ -82,12 +80,12 @@ export default function Detail (props){
                         </div>
                         <div>
                             <div style={{display:'flex', flexDirection:'row'}}>
-                                <img src={weight} alt='Weight Icon' height='60px' width='60px'/>
+                                <img src={weight} alt='Weight' height='60px' width='60px'/>
                                 <span className={style.pokestats}>{myPokemon[0].weight / 10}kg</span>                                </div>
                         </div>
                         <div>
                             <div style={{display:'flex', flexDirection:'row'}}>
-                                <img src={height} alt='Height' Icon height='60px' width='60px' />
+                                <img src={height} alt='Height' height='60px' width='60px' />
                                 <span className={style.pokestats}>{myPokemon[0].height / 10}m</span>
                             </div>   
                         </div>

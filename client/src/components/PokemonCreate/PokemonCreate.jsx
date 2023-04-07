@@ -271,6 +271,25 @@ export default function PokemonCreate(){
                         }
 
                     </div>
+                    {/* <div className={style.formdiv}>
+                        <label>Image:</label>
+                        <input type="file" value={input.image} name="image"
+                            onChange={ (e) => handleChange(e) }
+                            style={input.image ? errors.name ? {borderColor: '#e74c3c' } : {borderColor: '#2ecc71'} : {}}
+                         />
+                         {
+                            errors.image ? (
+                                <div>
+                                <i className="fas fa-exclamation-circle" style={{color: '#e74c3c'}}></i>
+                                <p>{errors.image}</p>
+                                </div>
+                            ) :
+                            input.image ?
+                            <i className="fas fa-check-circle" style={{color: '#2ecc71'}}></i>
+                            :
+                            <i></i>
+                        }
+                    </div> */}
                     <button onClick={(e) => {handleSection(e)}}>Next</button>
                     </section>
                     <section className={section === 2 ? style.show : style.hide}>
@@ -289,7 +308,7 @@ export default function PokemonCreate(){
                                                     onChange={(e) => handleChecked(e)}
                                             />
                                             <div className={style.circle} style={{display:'flex', alignItems:'center', justifyContent:'center', backgroundColor:typesColors[type.name]}}>
-                                                <img src={`images/icons/${type.name}.png`} alt={`${type.name}`} height="16px" /></div>
+                                                <img src={`images/types/${type.name}.png`} alt={`${type.name}`} height="16px" /></div>
                                             <div style={{width:'8px'}}></div>       
                                             {type.name}
                                         </div>

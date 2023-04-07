@@ -72,6 +72,10 @@ export default function validate(input, pokemons){
     if(input.types.length > 2){
         errors.types = `You can't choose more than 2 types per Pokemon`
     }
+
+    // if(!input.image){
+    //         errors.image = 'A image is required'
+    //     }
     
     return errors;
 }

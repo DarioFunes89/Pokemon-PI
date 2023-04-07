@@ -27,7 +27,7 @@ export default function Checkbox({types , handleChecked}) {
             <div ref={checkboxe} className={style.checkboxes}>
                 {
                     types.map( type => (
-                        <label for={type.name} key={type.name}>
+                        <label htmlFor={type.name} key={type.name}>
                             <input 
                                 type="checkbox" 
                                 id={type.name} 
