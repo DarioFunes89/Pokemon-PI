@@ -72,6 +72,12 @@ export function getDetail (id){
     }
 }
 
+export function reloadPokemons(){
+    return {
+        type:"RELOAD_POKEMONS",
+    }
+}
+
 export function removeDetail(){
     return {
         type:"REMOVE_DETAILS",

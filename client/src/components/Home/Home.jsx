@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react' ;
 import { useDispatch, useSelector } from 'react-redux' ;
-import { getPokemons, filterCreated, orderByNameOrStrengh, getTypes, removeDetail, filterPokemonsByType } from '../../redux/actions';
+import { getPokemons, filterCreated, orderByNameOrStrengh, getTypes, removeDetail, filterPokemonsByType, reloadPokemons } from '../../redux/actions';
 import { Link } from 'react-router-dom';
 import Card from '../Card/Card';
 import Paginado from '../Paginado/Paginado';
@@ -42,6 +42,11 @@ export default function Home(){
         setCurrentPage(1);
       }, [allPokemons.length,setCurrentPage]);
 
+    function handleClick(e){
+        e.preventDefault();
+        dispatch(reloadPokemons());
+    }
+
     function handleFilterCreated(e){
         dispatch(filterCreated(e.target.value))
     }
@@ -81,6 +86,7 @@ export default function Home(){
                         ))
                     }
                 </select>
+                    <button onClick={e => {handleClick(e)}} className={style.boton}>Reload all</button>
             </div>
             <Paginado
                 pokemonsPerPage={pokemonsPerPage}

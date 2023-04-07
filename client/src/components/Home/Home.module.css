@@ -12,6 +12,29 @@
     min-height: 100vh;
 }
 
+.boton {
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    border: none;
+
+    padding: 16px 32px;
+    color: #fff;
+    font-family: 'Roboto', Arial;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    line-height: 1;
+    border-radius: 8px;
+
+    background-image: linear-gradient(45deg, #2378c9 10%, #133079 90%);
+    background-position: 90% 0;
+    background-size: 200% 200%;
+    box-shadow: 0 2px 8px -1px #09113f;
+
+    transition: all 0.5s ease; 
+}
+
 .poke{
     background-color: #1C1D23;
     border: 2px solid rgb(51, 51, 51);
@@ -41,10 +64,9 @@
 select {
     cursor: pointer;
     box-shadow: none;
-    background: #1C1D23;
-    width: 8%;
+    width: 15%;
     height: 4%;
-    font-size: 0.8em;
+    font-size: 1em;
     padding-top: 1em;
     padding-right: 1.26em;
     padding-bottom: 1em;
@@ -53,10 +75,15 @@ select {
     border: none;
     outline: none;
     color: white;
+    background-image: linear-gradient(45deg, #2378c9 10%, #133079 90%);
+    background-position: 90% 0;
+    background-size: 200% 200%;
+    box-shadow: 0 2px 8px -1px #09113f;
 }
 
-
-/* Loading  */
+option {
+    color: black
+}
 
 .loading{
     position: absolute;

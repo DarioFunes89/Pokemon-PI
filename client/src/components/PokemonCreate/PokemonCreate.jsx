@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postPokemon, getTypes, getPokemons } from '../../redux/actions';
 import style from './PokemonCreate.module.css'
 import validate from './validate.js';
-import Oak from '../../images/profesor.png'
 import swal from 'sweetalert';
 
 
@@ -130,16 +129,15 @@ export default function PokemonCreate(){
 
     return(
         <div className={style.pagina}>
-            <img src={Oak} alt="Profesor Oak" height="560px" className={style.img}/>
-            <Link to='/home' className={style.back} style={{textDecoration: 'none'}}><button>Return home</button></Link>
+            <Link to='/home'><button className={style.back}>Back</button></Link>
             <div className={style.container}>
                 <div className={style.header}>
-                    <h2>Create your pokemon!</h2>
+                    <h2>Create your pokemon:</h2>
                 </div>
                 <form onSubmit={ (e) => handleSubmit(e) }>
                     <section className={section === 1 ? style.show : style.hide}>
                     <div className={style.formdiv} >
-                        <label>Name</label>
+                        <label>Name:</label>
                         <input 
                             type="text"
                             value={input.name}
@@ -162,7 +160,7 @@ export default function PokemonCreate(){
                         }
                     </div>
                     <div className={style.formdiv}>
-                        <label>Hp</label>
+                        <label>Hp:</label>
                         <input 
                             type="number"
                             value={input.hp}
@@ -184,7 +182,7 @@ export default function PokemonCreate(){
                         }
                     </div>
                     <div className={style.formdiv}>
-                        <label>Attack</label>
+                        <label>Attack:</label>
                         <input 
                             type="number"
                             value={input.attack}
@@ -206,7 +204,7 @@ export default function PokemonCreate(){
                         }
                     </div>
                     <div className={style.formdiv}>
-                        <label>Defense</label>
+                        <label>Defense:</label>
                         <input 
                             type="number"
                             value={input.defense}
@@ -228,7 +226,7 @@ export default function PokemonCreate(){
                         }
                     </div>
                     <div className={style.formdiv}>
-                        <label>Speed</label>
+                        <label>Speed:</label>
                         <input 
                             type="number"
                             value={input.speed}
@@ -250,7 +248,7 @@ export default function PokemonCreate(){
                         }
                     </div>
                     <div className={style.formdiv}>
-                        <label>Weight</label>
+                        <label>Weight:</label>
                         <input 
                             type="number"
                             value={input.weight}
@@ -272,7 +270,7 @@ export default function PokemonCreate(){
                         }
                     </div>
                     <div className={style.formdiv}>
-                        <label>Height</label>
+                        <label>Height:</label>
                         <input 
                             type="number"
                             value={input.height}
@@ -311,8 +309,8 @@ export default function PokemonCreate(){
                                                     value={type.name}
                                                     onChange={(e) => handleChecked(e)}
                                             />
-                                            <div className={style.circle} style={{display:'flex', alignItems:'center', justifyContent:'center', backgroundColor:typesColors[type.name]}}
-                                            ><img src={`images/icons/${type.name}.svg`} alt={`${type.name}`} height="16px" /></div>
+                                            <div className={style.circle} style={{display:'flex', alignItems:'center', justifyContent:'center', backgroundColor:typesColors[type.name]}}>
+                                                <img src={`images/icons/${type.name}.svg`} alt={`${type.name}`} height="16px" /></div>
                                             <div style={{width:'8px'}}></div>       
                                             {type.name}
                                         </div>
