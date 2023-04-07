@@ -138,10 +138,7 @@ export default function PokemonCreate(){
                     <section className={section === 1 ? style.show : style.hide}>
                     <div className={style.formdiv} >
                         <label>Name:</label>
-                        <input 
-                            type="text"
-                            value={input.name}
-                            name="name"
+                        <input type="text" value={input.name} name="name"
                             onChange={ (e) => handleChange(e) }
                             style={input.name.length ? errors.name ? {borderColor: '#e74c3c' } : {borderColor: '#2ecc71'} : {}}
                             autocomplete="off"
@@ -161,10 +158,7 @@ export default function PokemonCreate(){
                     </div>
                     <div className={style.formdiv}>
                         <label>Hp:</label>
-                        <input 
-                            type="number"
-                            value={input.hp}
-                            name="hp"
+                        <input type="number" value={input.hp} name="hp"
                             onChange={ (e) => handleChange(e) }
                             style={input.hp.length ? errors.hp ? {borderColor: '#e74c3c' } : {borderColor: '#2ecc71'} : {}}
                         />
@@ -183,10 +177,7 @@ export default function PokemonCreate(){
                     </div>
                     <div className={style.formdiv}>
                         <label>Attack:</label>
-                        <input 
-                            type="number"
-                            value={input.attack}
-                            name="attack"
+                        <input type="number" value={input.attack} name="attack"
                             onChange={ (e) => handleChange(e) }
                             style={input.attack.length ? errors.attack ? {borderColor: '#e74c3c' } : {borderColor: '#2ecc71'} : {}}
                         />
@@ -205,10 +196,7 @@ export default function PokemonCreate(){
                     </div>
                     <div className={style.formdiv}>
                         <label>Defense:</label>
-                        <input 
-                            type="number"
-                            value={input.defense}
-                            name="defense"
+                        <input type="number"value={input.defense} name="defense"
                             onChange={ (e) => handleChange(e) }
                             style={input.defense.length ? errors.defense ? {borderColor: '#e74c3c' } : {borderColor: '#2ecc71'} : {}}
                         />
@@ -227,10 +215,7 @@ export default function PokemonCreate(){
                     </div>
                     <div className={style.formdiv}>
                         <label>Speed:</label>
-                        <input 
-                            type="number"
-                            value={input.speed}
-                            name="speed"
+                        <input type="number" value={input.speed} name="speed"
                             onChange={ (e) => handleChange(e) }
                             style={input.speed.length ? errors.speed ? {borderColor: '#e74c3c' } : {borderColor: '#2ecc71'} : {}}
                         />
@@ -249,10 +234,7 @@ export default function PokemonCreate(){
                     </div>
                     <div className={style.formdiv}>
                         <label>Weight:</label>
-                        <input 
-                            type="number"
-                            value={input.weight}
-                            name="weight"
+                        <input type="number" value={input.weight} name="weight"
                             onChange={ (e) => handleChange(e) }
                             style={input.weight.length ? errors.weight ? {borderColor: '#e74c3c' } : {borderColor: '#2ecc71'} : {}}
                         />
@@ -271,10 +253,7 @@ export default function PokemonCreate(){
                     </div>
                     <div className={style.formdiv}>
                         <label>Height:</label>
-                        <input 
-                            type="number"
-                            value={input.height}
-                            name="height"
+                        <input type="number" value={input.height} name="height"
                             onChange={ (e) => handleChange(e) }
                             style={input.height.length ? errors.height ? {borderColor: '#e74c3c' } : {borderColor: '#2ecc71'} : {}}
                         />
@@ -310,7 +289,7 @@ export default function PokemonCreate(){
                                                     onChange={(e) => handleChecked(e)}
                                             />
                                             <div className={style.circle} style={{display:'flex', alignItems:'center', justifyContent:'center', backgroundColor:typesColors[type.name]}}>
-                                                <img src={`images/icons/${type.name}.svg`} alt={`${type.name}`} height="16px" /></div>
+                                                <img src={`images/types/${type.name}.png`} alt={`${type.name}`} height="16px" /></div>
                                             <div style={{width:'8px'}}></div>       
                                             {type.name}
                                         </div>
@@ -334,13 +313,9 @@ export default function PokemonCreate(){
                             <button className={style.previous} onClick={(e) => {handleSection(e)}}>Previous</button>
                             <button className={style.create} type='submit'>Create</button>
                         </div>
-                        
                     </section>   
-                    
-
                 </form>
             </div>
-
         </div>
     )
 }
