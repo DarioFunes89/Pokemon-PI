@@ -289,7 +289,7 @@ export default function PokemonCreate(){
                                                     onChange={(e) => handleChecked(e)}
                                             />
                                             <div className={style.circle} style={{display:'flex', alignItems:'center', justifyContent:'center', backgroundColor:typesColors[type.name]}}>
-                                                <img src={`images/types/${type.name}.png`} alt={`${type.name}`} height="16px" /></div>
+                                                <img src={`images/icons/${type.name}.png`} alt={`${type.name}`} height="16px" /></div>
                                             <div style={{width:'8px'}}></div>       
                                             {type.name}
                                         </div>
