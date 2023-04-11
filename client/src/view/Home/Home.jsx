@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react' ;
 import { useDispatch, useSelector } from 'react-redux' ;
 import { getPokemons, filterCreated, orderByNameOrStrengh, getTypes, removeDetail, filterPokemonsByType, reloadPokemons } from '../../redux/actions';
 import { Link } from 'react-router-dom';
-import Card from '../Card/Card';
-import Paginado from '../Paginado/Paginado';
-import Navbar from '../Navbar/Navbar';
+import Card from '../../components/Card/Card';
+import Paginado from '../../components/Paginado/Paginado';
+import Navbar from '../../components/Navbar/Navbar';
 import style from './Home.module.css';
 import loading from '../../images/loading.gif'
 import notLoading from '../../images/notLoading.gif'
@@ -88,7 +88,7 @@ export default function Home(){
                     {
                         types.map( type => (
                             <option value={type.name} key={type.name}>{type.name}</option>
-                        ))
+                        )) 
                     }
                 </select>
                     <button onClick={e => {handleClick(e)}} className={style.boton}>Reload all</button>

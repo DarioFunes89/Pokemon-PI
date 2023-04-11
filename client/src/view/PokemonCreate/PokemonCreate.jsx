@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { postPokemon, getTypes, getPokemons } from '../../redux/actions';
 import style from './PokemonCreate.module.css'
-import validate from './validate.js';
+import validate from './validate';
 import swal from 'sweetalert';
 
 
@@ -119,6 +119,7 @@ export default function PokemonCreate(){
                 weight: '',
                 height: '',
                 types: [],
+                image: ''
             })
             history.push("/home")
         } else{
@@ -273,7 +274,7 @@ export default function PokemonCreate(){
                     </div>
                     {/* <div className={style.formdiv}>
                         <label>Image:</label>
-                        <input type="file" value={input.image} name="image"
+                        <input type="file" id="files" value={input.image} name="image"
                             onChange={ (e) => handleChange(e) }
                             style={input.image ? errors.name ? {borderColor: '#e74c3c' } : {borderColor: '#2ecc71'} : {}}
                          />

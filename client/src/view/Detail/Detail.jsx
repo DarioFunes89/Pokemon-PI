@@ -43,12 +43,12 @@ export default function Detail (props){
                     </div>
                     <div className={style.visual}>
                         
-                        <img src={myPokemon[0].img ? myPokemon[0].img : random} alt={"Pokemon"} className={style.imgpoke}/>
+                        <img src={myPokemon[0].image ? myPokemon[0].image : random} alt={"Pokemon"} className={style.imgpoke}/>
                         <div className={style.types}>
                             {
                                 myPokemon[0].types ? myPokemon[0].types.map( el => {
                                     return(
-                                        <img src={`../../images/types/${el}.png`} alt="Types" height="160px" key={el}/>
+                                        <img src={`../../images/types/${el}.png`} alt="Types" height="160px" key={el.id}/>
                                     )
                                 }
                                 ) :

@@ -6,7 +6,7 @@
     height: 100vh;
     width: 100%;
     background-image: url(imageLanding.jpg);
-    background-size: cover;
+    background-size: auto;
 }
 
 /* Button Style */
@@ -16,12 +16,12 @@
     text-decoration: none;
     border: none;
     position: relative;
-    top: 180px;
-    left: -240px;
+    top: 150px;
+    left: -250px;
     padding: 12px 25px;
     color: #a9a114;
     font-family: 'Roboto', Arial;
-    font-size: 18px;
+    font-size: 35px;
     font-weight: 500;
     letter-spacing: .5px;
     line-height: 1;
