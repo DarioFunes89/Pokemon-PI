@@ -135,6 +135,53 @@ function rootReducer (state = initialState, action){
                         return 0;
                     }) 
             }
+
+            if(action.payload === 'LWeight'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.weight > b.weight){
+                            return 1;
+                        }
+                        if(b.weight > a.weight){
+                            return -1;
+                        }
+                        return 0;
+                    }) 
+            }
+            if(action.payload === 'HWeight'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.weight > b.weight){
+                            return -1;
+                        }
+                        if(b.weight > a.weight){
+                            return 1;
+                        }
+                        return 0;
+                    }) 
+            }
+
+            if(action.payload === 'LHeight'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.height > b.height){
+                            return 1;
+                        }
+                        if(b.height > a.height){
+                            return -1;
+                        }
+                        return 0;
+                    }) 
+            }
+            if(action.payload === 'HHeight'){
+                sortedArray = state.pokemons.sort(function (a, b){
+                        if(a.height > b.height){
+                            return -1;
+                        }
+                        if(b.height > a.height){
+                            return 1;
+                        }
+                        return 0;
+                    }) 
+            }
+
             if(action.payload === 'normal'){
                 const apiPokes = state.pokemons.filter( el => !el.createdInDb).sort(function (a, b){
                     if(a.id > b.id){

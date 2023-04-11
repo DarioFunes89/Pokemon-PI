@@ -8,6 +8,7 @@ import Navbar from '../Navbar/Navbar';
 import style from './Home.module.css';
 import loading from '../../images/loading.gif'
 import notLoading from '../../images/notLoading.gif'
+import random from '../../images/random.png'
 
 
 export default function Home(){
@@ -72,6 +73,10 @@ export default function Home(){
                     <option value="desc">Z - A</option>
                     <option value="HAttack">Highest Attack</option>
                     <option value="LAttack">Lowest Attack</option>
+                    <option value="HHeight">Highest Height</option>
+                    <option value="LHeight">Lowest Height</option>
+                    <option value="HWeight">Highest Weight</option>
+                    <option value="LWeight">Lowest Weight</option>
                 </select>
                 <select onChange={e => handleFilterCreated(e)}>
                     <option value="All">All</option>
@@ -102,7 +107,14 @@ export default function Home(){
                     return(
                         <div>
                             <Link to={"/home/" + el.id} style={{textDecoration:'none'}} key={el.id}>
-                                <Card key={el.id} name={el.name} types={el.types} image={el.img} id={el.id} weight={el.weight} height={el.height} />
+                                <Card 
+                                key={el.id}
+                                id={el.id} 
+                                name={el.name} 
+                                types={el.types} 
+                                image={el.image ? el.image : random} 
+                                weight={el.weight} 
+                                height={el.height} />
                             </Link>
                         </div>
                     )

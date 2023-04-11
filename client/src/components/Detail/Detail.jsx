@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail } from '../../redux/actions';
@@ -10,6 +10,7 @@ import height from '../../images/stats/height.png';
 import hp from '../../images/stats/hp.png';
 import speed from '../../images/stats/speed.png';
 import weight from '../../images/stats/weight.png';
+import random from '../../images/random.png'
 
 
 export default function Detail (props){
@@ -22,11 +23,13 @@ export default function Detail (props){
 
     const myPokemon = useSelector( state => state.detail)
 
+    const [section, setSection] = useState(1);
+
     useEffect( () => {
         if(myPokemon[0] && myPokemon[0].createdInDb){
-            
+            setSection(2)
         }
-    }, [myPokemon]);
+    }, [myPokemon, setSection]);
 
     return(
         <div>
@@ -39,7 +42,8 @@ export default function Detail (props){
                         <p className={style.id}>#{myPokemon[0].id}</p>
                     </div>
                     <div className={style.visual}>
-                        <img src={myPokemon[0].img} alt={"Pokemon"} className={style.imgpoke}/>
+                        
+                        <img src={myPokemon[0].img ? myPokemon[0].img : random} alt={"Pokemon"} className={style.imgpoke}/>
                         <div className={style.types}>
                             {
                                 myPokemon[0].types ? myPokemon[0].types.map( el => {

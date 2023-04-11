@@ -141,7 +141,7 @@ export default function PokemonCreate(){
                         <input type="text" value={input.name} name="name"
                             onChange={ (e) => handleChange(e) }
                             style={input.name.length ? errors.name ? {borderColor: '#e74c3c' } : {borderColor: '#2ecc71'} : {}}
-                            autocomplete="off"
+                            autoComplete="off"
                         />
                         {
                             errors.name ? (
@@ -299,7 +299,7 @@ export default function PokemonCreate(){
                             <div className={style.containertypes}>
                             {
                                 types.map( type => (
-                                    <label for={type.name}>
+                                    <label htmlFor={type.name}>
                                         <div className={style.bytype} > 
                                             <input 
                                                     type="checkbox" 

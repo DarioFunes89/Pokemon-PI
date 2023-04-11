@@ -8,30 +8,166 @@ const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-const getApiInfo = async () => {
-    const apiUrl = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=20");
-    const results = apiUrl.data.results
 
-    const pokemonInfo = []
-    
-    for(let i = 0 ; i < results.length ; i++){
-      const pokes = await axios.get(results[i].url);
-      const pokeInfo = pokes.data;
+const random = (arrlength) => {
+  let number = Math.floor(Math.random() * arrlength);
+  return number
+ }
 
-      pokemonInfo.push({
-        id: pokeInfo.id,
-        name: pokeInfo.name,
-        types: pokeInfo.types.map((t) => t.type.name),
-        img: pokeInfo.sprites.other.dream_world.front_default,
-        attack: pokeInfo.stats[1].base_stat,
-        weight: pokeInfo.weight,
-        height: pokeInfo.height
-      });
+const arreglo = (arr) => {
+  let results = []
+
+  if(arr[0] && arr[0].hasOwnProperty('move')){
+    const one = arr[random(arr.length)];
+    const two = arr[random(arr.length)];
+    const three = arr[random(arr.length)];
+
+    results.push(one.move.name, two.move.name, three.move.name)
+  } else{
+    if(arr.length > 1){
+      const one = arr[random(arr.length)]['location_area'].name;
+      const two = arr[random(arr.length)]['location_area'].name;
+
+      one !== two ? results.push(one, two) : results.push(one)
+    } else{
+      arr[0] ? results.push(arr[0]['location_area'].name) : results
     }
-    
-    return pokemonInfo;
-}
+  }
+  return results
+ } 
 
+const evolution = async (evol) => {
+  try {
+    let evoChain = [];
+    let evoData = evol.chain;
+
+    do {
+      let evoDetails = evoData['evolution_details'][0];
+      const apiPokeUrl = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon/" + evoData.species.name
+      );
+
+      let result = {
+        name: evoData.species.name,
+        img: apiPokeUrl.data.sprites.other.dream_world.front_default,
+      }
+
+      if(evoDetails){
+        for(prop in evoDetails){
+          if(evoDetails[prop]){
+            if(typeof evoDetails[prop] === 'object'){
+              result[prop] = evoDetails[prop].name
+            } else{
+              result[prop] = evoDetails[prop]
+            }
+          }
+          if(prop === 'held_item' && evoDetails[prop]){
+            let item = await axios.get(evoDetails[prop].url)
+            result.itemimg = item.data.sprites.default
+          }
+        }
+      }
+      evoChain.push(result)
+
+      evoData = evoData['evolves_to'][0];
+    } while (evoData && evoData.hasOwnProperty('evolves_to'));
+
+    return evoChain
+
+  } catch (e) {
+    console.error(e)
+  }
+} 
+
+
+// obtener todos los pokemons de la api (20)
+// const getApiInfo = async () => {
+//     const apiUrl = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=20");
+//     const results = apiUrl.data.results
+
+//     const pokemonInfo = []
+    
+//     for(let i = 0 ; i < results.length ; i++){
+//       const pokes = await axios.get(results[i].url);
+//       const pokeInfo = pokes.data;
+
+//       pokemonInfo.push({
+//         id: pokeInfo.id,
+//         name: pokeInfo.name,
+//         types: pokeInfo.types.map((t) => t.type.name),
+//         img: pokeInfo.sprites.other.dream_world.front_default,
+//         attack: pokeInfo.stats[1].base_stat,
+//         weight: pokeInfo.weight,
+//         height: pokeInfo.height,
+//         defense: pokeInfo.defense,
+//       });
+//     }
+    
+//     return pokemonInfo;
+// }
+
+const pokeLoad = async (url) => {
+  try {
+    const pokeFromApi = await axios(url);
+    return pokeFromApi.data;
+  } catch (error) {
+    return { error: 'No response from API' };
+  }
+};
+
+const pokeNameUrl = async (pokeArray, pokeCant, resultApi) => {
+  try {
+    while (pokeArray.length < pokeCant) {
+      pokeArray = pokeArray.concat(resultApi.results);
+      resultApi = await pokeLoad(resultApi.next);
+    }
+    return pokeArray;
+  } catch (error) {
+    return { error: 'Error in map pokeArray' };
+  }
+};
+
+const getApiInfo = async () => {
+  try {
+    let pokeArray = [];
+    const pokeCant = 100;
+    let resultApi = await pokeLoad('https://pokeapi.co/api/v2/pokemon');
+
+    pokeArray = await pokeNameUrl(pokeArray, pokeCant, resultApi);
+
+    const pokemons = pokeArray.map(async (poke) => {
+      const pokeData = await axios(poke.url).then((pokeData) => {
+        const pokemon = {
+          id: pokeData.data.id,
+          name: pokeData.data.name,
+          image: pokeData.data.sprites.other.dream_world.front_default,
+          height: pokeData.data.height,
+          weight: pokeData.data.weight,
+          attack: pokeData.data.stats[1].base_stat,
+          defense: pokeData.data.stats[2].base_stat,
+          speed: pokeData.data.stats[5].base_stat,
+          hp: pokeData.data.stats[0].base_stat,
+          types: pokeData.data.types.map((t) => t.type.name),
+        };
+        return pokemon;
+      });
+      return pokeData;
+    });
+    return Promise.all(pokemons)
+      .then((poke) => {
+        console.log('Array Poke Promisses Resolve');
+        return poke;
+      })
+      .catch((reason) => {
+        console.log('Array Poke Promisses Error');
+        return [];
+      });
+  } catch (error) {
+    return { error: 'Error in Data Poke response' };
+  }
+};
+
+// obtener los pokemon de la BD
 const getDbInfo = async () => {
 	const data = (await Pokemon.findAll({ 
     include: {
@@ -52,6 +188,7 @@ const getDbInfo = async () => {
   return data
 }
 
+// concatenar los pokemon de la api y BD
 const getAllPokemons = async () => {
     const apiInfo = await getApiInfo();
     const dbInfo = await getDbInfo();
@@ -61,6 +198,7 @@ const getAllPokemons = async () => {
     return infoTotal;
 }
 
+// obtener un pokemon x su id
 const getPokeInfo = async (id) => {
   try {
     const apiPokeUrl = await axios.get("https://pokeapi.co/api/v2/pokemon/" + id);
@@ -87,6 +225,7 @@ const getPokeInfo = async (id) => {
   }
 }
 
+// obtener el pokemon por nombre 
 const getPokeInfoxName = async (name) => {
   try {
     const apiPokeUrl = await axios.get(
@@ -110,7 +249,7 @@ const getPokeInfoxName = async (name) => {
   }
 };
 
-
+// ruta get
 router.get("/pokemons", async (req, res) => {
   const name = req.query.name;
 
