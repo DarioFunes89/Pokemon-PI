@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Card.module.css'
 
-export default function Card({ name, types, image, id, weight, height}){
+export default function Card({ name, types, image, id, weight, height, attack}){
 
     return(
         <div className={style.card} style={{ backgroundImage: `url(images/typesbkgm/${types[0]}.png)` }}>

@@ -54,6 +54,7 @@ export default function Home(){
 
     function handleFilterByType(e){
         dispatch(filterPokemonsByType(e.target.value));
+        
     }
 
     function handleSort(e){
@@ -114,7 +115,8 @@ export default function Home(){
                                 types={el.types} 
                                 image={el.image ? el.image : random} 
                                 weight={el.weight} 
-                                height={el.height} />
+                                height={el.height}
+                                attack={el.attack} />
                             </Link>
                         </div>
                     )
