@@ -4,7 +4,8 @@ import LandingPage from "./view/LandingPage/LandingPage"
 import Home from './view/Home/Home';
 import PokemonCreate from './view/PokemonCreate/PokemonCreate'
 import Detail from './view/Detail/Detail'
-axios.defaults.baseURL="pokemon-pi-production-2a39.up.railway.app/"
+import axios from 'axios'
+axios.defaults.baseURL="https://pokemon-pi-production-2a39.up.railway.app/"
 
 
 function App() {
