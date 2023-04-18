@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export function getPokemons(){
     return async function(dispatch){
-        var json = await axios.get("/pokemons",{
+        var json = await axios.get("pokemons",{
 
         })
         
